@@ -11,9 +11,12 @@ function readProduct() {
 
 function deleteProduct() {
 
+    const requestURL = './js/fetch_delete.php';
+
     let values = [];
 
     let fav = document.querySelectorAll('.delete-checkbox');
+
 
     for (let i = 0; i < fav.length; ++i) {
         if (fav[i].checked) {
@@ -21,7 +24,7 @@ function deleteProduct() {
         }
     }
 
-    fetch('./js/fetch_delete.php', {
+    fetch(requestURL, {
 
         method: 'POST',
         headers: {
@@ -31,6 +34,7 @@ function deleteProduct() {
             ids: values
         })
     });
-    location.reload();
+    readProduct();
+
 
 }
