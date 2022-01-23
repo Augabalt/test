@@ -1,6 +1,3 @@
-<?php
-include 'Product.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +9,6 @@ include 'Product.php';
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-
     <div class="container" style="margin-top:40px;">
         <div class="row row-cols-2">
             <div class="col">
@@ -31,7 +27,6 @@ include 'Product.php';
         </div>
         <hr>
         <div class="container" id="product_list"></div>
-
     </div>
     <footer class="mt-auto">
         <div class="container" style="margin-bottom:40px; text-align: center">
