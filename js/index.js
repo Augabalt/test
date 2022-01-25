@@ -34,7 +34,7 @@ function deleteProduct() {
             ids: values
         })
     });
-    readProduct();
 
+    readProduct();
 
 }
