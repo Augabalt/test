@@ -2,7 +2,7 @@ readProduct();
 
 function readProduct() {
 
-    const requestURL = './js/fetch_read.php';
+    const requestURL = './fetch/read.php';
 
     fetch(requestURL)
         .then(data => data.text())
@@ -11,7 +11,7 @@ function readProduct() {
 
 function deleteProduct() {
 
-    const requestURL = './js/fetch_delete.php';
+    const requestURL = './fetch/delete.php';
 
     let values = [];
 
@@ -35,6 +35,6 @@ function deleteProduct() {
         })
     });
 
-    readProduct();
+    location.reload();
 
 }

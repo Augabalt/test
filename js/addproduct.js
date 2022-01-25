@@ -17,7 +17,7 @@
              e.preventDefault()
              val = this.validate()
              if (val == true) {
-                 fetch('./js/fetch_load.php', {
+                 fetch('./fetch/load.php', {
 
                      method: 'POST',
                      headers: {
