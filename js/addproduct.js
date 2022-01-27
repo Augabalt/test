@@ -12,31 +12,11 @@
          length: ''
      },
      methods: {
-
-         submit(e) {
-             e.preventDefault()
+         submit(event) {
+             event.preventDefault()
              val = this.validate()
              if (val == true) {
-                 fetch('./fetch/load.php', {
-
-                     method: 'POST',
-                     headers: {
-                         'Content-Type': 'application/json'
-                     },
-                     body: JSON.stringify({
-                         sku: this.sku,
-                         name: this.name,
-                         price: this.price,
-                         pt: this.pt,
-                         size: this.size,
-                         weight: this.weight,
-                         height: this.height,
-                         width: this.width,
-                         length: this.length
-
-                     })
-                 })
-                 window.location.href = 'index.php'
+                 this.fetchLoad()
              } else {
                  console.log('Error')
              }
@@ -73,6 +53,35 @@
                  return true;
              } else {
                  return false;
+             }
+
+         },
+         async fetchLoad() {
+             const url = './fetch/load.php';
+             try {
+                 const res = await fetch(url, {
+                     method: 'POST',
+                     headers: {
+                         'Content-Type': 'application/json'
+                     },
+                     body: JSON.stringify({
+                         sku: this.sku,
+                         name: this.name,
+                         price: this.price,
+                         pt: this.pt,
+                         size: this.size,
+                         weight: this.weight,
+                         height: this.height,
+                         width: this.width,
+                         length: this.length
+
+                     })
+                 })
+             } catch (e) {
+                 console.error(e)
+             } finally {
+                 window.location.href = 'index.php'
+
              }
 
          }

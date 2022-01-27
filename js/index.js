@@ -1,17 +1,20 @@
-readProduct();
+readProduct()
 
-function readProduct() {
+async function readProduct() {
+    const url = './fetch/read.php';
+    try {
+        const res = await fetch(url)
+        const data = await res.text()
+        document.getElementById("product_list").innerHTML = data
+    } catch (e) {
+        console.error(e)
+    } finally {
 
-    const requestURL = './fetch/read.php';
-
-    fetch(requestURL)
-        .then(data => data.text())
-        .then(data => document.getElementById("product_list").innerHTML = data)
+    }
 }
 
-function deleteProduct() {
-
-    const requestURL = './fetch/delete.php';
+async function deleteProduct() {
+    const url = './fetch/delete.php';
 
     let values = [];
 
@@ -24,17 +27,22 @@ function deleteProduct() {
         }
     }
 
-    fetch(requestURL, {
+    try {
+        const res = await fetch(url, {
 
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            ids: values
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                ids: values
+            })
         })
-    });
 
-    location.reload();
+    } catch (e) {
+        console.error(e)
+    } finally {
+        location.reload()
 
+    }
 }
