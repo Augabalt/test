@@ -25,7 +25,6 @@
 
          },
          validate() {
-
              // delete all already existing validation errors to check for a new one
              const errors = document.getElementsByClassName('error')
              while (errors.length > 0) {
@@ -33,7 +32,7 @@
              }
 
              let elements = document.querySelectorAll("#product_form input, select")
-             let arr = Array.from(elements) //Node to Array
+             let arr = Array.from(elements) //NodeList to Array
 
              arr.forEach(element => {
                  if (element.value == "") {

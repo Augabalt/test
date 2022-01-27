@@ -42,7 +42,7 @@ async function deleteProduct() {
     } catch (e) {
         console.error(e)
     } finally {
-        location.reload()
+        window.location.reload()
 
     }
 }
