@@ -1,18 +1,17 @@
 <?php
+require_once '../vendor/autoload.php';
 
-include '../Product.php';
+$test = new App\Main\Db;
 
-$test = new Db();
+$test = new App\Main\Db;
 $test->createTableCategory();
 $test->createTableProduct();
 
-$dvd = new Dvd();
+$dvd = new App\Other\Dvd;
 $dvd -> readData();
 
-$book = new Book();
+$book = new App\Other\Book;
 $book -> readData();
 
-$furniture = new Furniture();
+$furniture = new App\Other\Furniture;
 $furniture -> readData();
-
-?>

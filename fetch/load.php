@@ -1,6 +1,6 @@
 <?php
 
-include '../Product.php';
+require_once '../vendor/autoload.php';
 
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, TRUE);
@@ -29,21 +29,21 @@ function abc($product, $sku, $name, $price, $pt, $size, $weight, $height, $width
 }
 
 if ($pt == 1){
-    $product = new Dvd();
+    $product = new App\Other\Dvd;
     abc($product, $sku, $name, $price, $pt, $size, $weight, $height, $width, $length);
     $product -> loadData();
 
 }
 
 if ($pt == 2){
-    $product = new Book();
+    $product = new App\Other\Book;
     abc($product, $sku, $name, $price, $pt, $size, $weight, $height, $width, $length);
     $product -> loadData();
 
 }
 
 if ($pt == 3){
-    $product = new Furniture();
+    $product = new App\Other\Furniture;
     abc($product, $sku, $name, $price, $pt, $size, $weight, $height, $width, $length);
     $product -> loadData();
 

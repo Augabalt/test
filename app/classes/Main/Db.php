@@ -1,22 +1,23 @@
 <?php
+namespace App\Main;
 
 class Db
 {
 
-// private $servername = "localhost";
-// private $dbname = "db";
-// private $username = "root";
-// private $password = "";
+ private $servername = "localhost";
+ private $dbname = "db";
+ private $username = "root";
+ private $password = "";
 
-    private $servername = "62.128.111.3";
-    private $dbname = "arbuusee_test";
-    private $username = "arbuusee_004";
-    private $password = "2?yyOc#Xm-{v";
+// private $servername = "62.128.111.3";
+// private $dbname = "arbuusee_test";
+// private $username = "arbuusee_004";
+// private $password = "2?yyOc#Xm-{v";
 
     function __construct(){
 
         $this->conn = null;
-        $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+        $this->conn = new \mysqli($this->servername, $this->username, $this->password, $this->dbname);
 
         if ($this->conn ->connect_error)
         {

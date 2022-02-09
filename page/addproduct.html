@@ -23,7 +23,7 @@
                         <button @click="submit" class="btn btn-primary">Save</button>
                     </div>
                     <div class="col">
-                        <button onclick="window.location.href='index.php'" class="btn btn-primary">Cancel</button>
+                        <button onclick="window.location.href='<?php echo URL;?>'" class="btn btn-primary">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,6 @@
                 </p>
             </span>
         </form>
-
     </div>
 
 
@@ -88,6 +87,10 @@
             <p>Scandiweb Test assignment</p>
         </div>
     </footer>
+    <script>
+        let main_url = "<?php echo URL; ?>"
+
+    </script>
 
     <script src="js/addproduct.js"></script>
 
