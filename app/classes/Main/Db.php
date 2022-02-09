@@ -1,38 +1,33 @@
 <?php
+
 namespace App\Main;
 
 class Db
 {
+    private $servername = "62.128.111.3";
+    private $dbname = "arbuusee_test";
+    private $username = "arbuusee_004";
+    private $password = "2?yyOc#Xm-{v";
 
- private $servername = "localhost";
- private $dbname = "db";
- private $username = "root";
- private $password = "";
-
-// private $servername = "62.128.111.3";
-// private $dbname = "arbuusee_test";
-// private $username = "arbuusee_004";
-// private $password = "2?yyOc#Xm-{v";
-
-    function __construct(){
+    function __construct()
+    {
 
         $this->conn = null;
         $this->conn = new \mysqli($this->servername, $this->username, $this->password, $this->dbname);
 
-        if ($this->conn ->connect_error)
-        {
+        if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
         return $this->conn;
-
     }
 
-    function createTableCategory(){
+    function createTableCategory()
+    {
 
         $sql = "SELECT * FROM category LIMIT 1;";
         $res = $this->conn->query($sql);
 
-        if (empty ($res)){
+        if (empty($res)) {
 
             $sql = "CREATE TABLE category (
                     id INT(6) NOT NULL AUTO_INCREMENT,
@@ -48,17 +43,16 @@ class Db
                     ";
 
             $this->conn->multi_query($sql);
-
         }
-
     }
 
-    function createTableProduct() {
+    function createTableProduct()
+    {
 
         $sql = "SELECT * FROM product LIMIT 1;";
         $res = $this->conn->query($sql);
 
-        if (empty ($res)){
+        if (empty($res)) {
 
             $sql = "CREATE TABLE product (
                     id INT(6) NOT NULL AUTO_INCREMENT,
@@ -75,21 +69,16 @@ class Db
                     FOREIGN KEY (category_id) REFERENCES category (id)
                     ) ENGINE=INNODB";
 
-        $this->conn->query($sql);
-
+            $this->conn->query($sql);
         }
-
-
     }
 
-    function deleteDataProduct($ids) {
+    function deleteDataProduct($ids)
+    {
 
         foreach ($ids as $id) {
             $sql = "DELETE FROM product WHERE id= $id ";
             $this->conn->query($sql);
-
-         }
-
+        }
     }
-
 }

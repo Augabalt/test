@@ -1,5 +1,4 @@
 <?php
-
 require_once '../vendor/autoload.php';
 
 $inputJSON = file_get_contents('php://input');
@@ -60,6 +59,3 @@ function clean($value = ""){
     $value = htmlspecialchars($value);
     return $value;
 }
-
-
-?>

@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Other;
 
 class Book extends Product
 {
 
-    function readData(){
+    function readData()
+    {
 
         echo '<div class="row row-cols-4">';
 
@@ -12,37 +14,35 @@ class Book extends Product
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {
-          // output data of each row
-          while($row = $result->fetch_assoc()) {
-              echo '
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                echo '
                 <div class="col" style="padding-bottom: 20px;">
                    <div class="card">
                         <div class="form-check">
-                            <input class="delete-checkbox" name="dvd" type="checkbox" value="'.$row['id'].'">
+                            <input class="delete-checkbox" name="dvd" type="checkbox" value="' . $row['id'] . '">
                         </div>
                         <div class="card-body text-center">
-                            '.$row['sku'].'<br>
-                            '.$row['name'].'<br>
-                            '.$row['price'].' &#36<br>
-                            Weight: '.$row['weight'].' Kg
+                            ' . $row['sku'] . '<br>
+                            ' . $row['name'] . '<br>
+                            ' . $row['price'] . ' &#36<br>
+                            Weight: ' . $row['weight'] . ' Kg
                         </div>
                     </div>
                 </div>
               ';
-          }
+            }
         }
 
         echo '</div><br>';
-
     }
 
-    function loadData(){
+    function loadData()
+    {
 
         $sql = "INSERT INTO product (sku, name, price, weight, category_id) VALUES (?,?,?,?,?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ssiii", $this->sku, $this->name, $this->price, $this->weight, $this->pt);
         $stmt->execute();
-
     }
-
 }

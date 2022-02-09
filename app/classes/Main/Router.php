@@ -1,21 +1,22 @@
 <?php
+
 namespace App\Main;
 
-class Router {
+class Router
+{
     private $_route = array();
-    public function setRoute($dir, $file) {
+    public function setRoute($dir, $file)
+    {
         $this->_route[trim($dir, "/")] = $file;
     }
 
-    public function route() {
+    public function route()
+    {
         if (!isset($_SERVER["PATH_INFO"])) {
             include_once "page/index.html";
         } elseif (isset($this->_route[trim($_SERVER["PATH_INFO"], "/")])) {
             include_once $this->_route[trim($_SERVER["PATH_INFO"], "/")];
-        }
-        else return false;
+        } else return false;
         return true;
     }
 }
-
-?>
